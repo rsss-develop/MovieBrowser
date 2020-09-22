@@ -8,7 +8,7 @@ FolderManagerDialog::FolderManagerDialog(QWidget *parent) :
     ui(new Ui::FolderManagerDialog)
 {
     ui->setupUi(this);
-
+//
     QFileSystemModel *model = new QFileSystemModel();
     QModelIndex parentIndex = model->setRootPath("");
 
