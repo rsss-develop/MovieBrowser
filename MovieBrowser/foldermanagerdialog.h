@@ -52,7 +52,8 @@ public:
 private:
     Ui::FolderManagerDialog *ui;
 
-    QSet<QPersistentModelIndex> monitorList;
+   QStringList monitorList;
+
 };
 
 #endif // FOLDERMANAGERDIALOG_H
