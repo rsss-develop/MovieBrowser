@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -70,12 +70,20 @@
               <property name="text">
                <string>常時監視</string>
               </property>
+              <property name="icon">
+               <iconset resource="../resource.qrc">
+                <normaloff>:/images/icon/arrow_refresh.png</normaloff>:/images/icon/arrow_refresh.png</iconset>
+              </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioButton_2">
               <property name="text">
                <string>監視から外す</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../resource.qrc">
+                <normaloff>:/images/icon/cross.png</normaloff>:/images/icon/cross.png</iconset>
               </property>
              </widget>
             </item>
@@ -154,6 +162,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

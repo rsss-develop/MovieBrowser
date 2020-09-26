@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "foldermanagerdialog.h"
+#include "FolderManagerDialog/foldermanagerdialog.h"
 
 #include <QTranslator>
 #include <QtDebug>

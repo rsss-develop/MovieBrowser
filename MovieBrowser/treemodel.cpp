@@ -1,5 +1,7 @@
 #include <treemodel.h>
 
+#include <QDebug>
+
 TreeModel::TreeModel (QObject *parent)
     : QFileSystemModel(parent)
 {
@@ -45,3 +47,5 @@ bool TreeModel::setData(const QModelIndex &index, const QVariant &value,
     }
     return QFileSystemModel::setData(index, value, role);
 }
+
+

@@ -10,6 +10,7 @@
 #define UI_FOLDERMANAGERDIALOG_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
@@ -28,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_FolderManagerDialog
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout;
@@ -55,22 +56,22 @@ public:
         if (FolderManagerDialog->objectName().isEmpty())
             FolderManagerDialog->setObjectName(QString::fromUtf8("FolderManagerDialog"));
         FolderManagerDialog->resize(573, 442);
-        widget = new QWidget(FolderManagerDialog);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(10, 30, 528, 361));
-        verticalLayout_5 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(FolderManagerDialog);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 30, 528, 361));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
         verticalLayout->addWidget(label);
 
-        treeDirView = new QTreeView(widget);
+        treeDirView = new QTreeView(layoutWidget);
         treeDirView->setObjectName(QString::fromUtf8("treeDirView"));
 
         verticalLayout->addWidget(treeDirView);
@@ -88,18 +89,24 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         verticalLayout_2->addWidget(label_2);
 
-        radioButton = new QRadioButton(widget);
+        radioButton = new QRadioButton(layoutWidget);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/images/icon/arrow_refresh.png"), QSize(), QIcon::Normal, QIcon::Off);
+        radioButton->setIcon(icon);
 
         verticalLayout_2->addWidget(radioButton);
 
-        radioButton_2 = new QRadioButton(widget);
+        radioButton_2 = new QRadioButton(layoutWidget);
         radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/images/icon/cross.png"), QSize(), QIcon::Normal, QIcon::Off);
+        radioButton_2->setIcon(icon1);
 
         verticalLayout_2->addWidget(radioButton_2);
 
@@ -119,12 +126,12 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
         verticalLayout_3->addWidget(label_3);
 
-        listWidget = new QListWidget(widget);
+        listWidget = new QListWidget(layoutWidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
 
         verticalLayout_3->addWidget(listWidget);
@@ -144,7 +151,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        buttonBox_2 = new QDialogButtonBox(widget);
+        buttonBox_2 = new QDialogButtonBox(layoutWidget);
         buttonBox_2->setObjectName(QString::fromUtf8("buttonBox_2"));
         buttonBox_2->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
