@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHBoxLayout>
@@ -40,8 +41,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_2;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
+    QRadioButton *radioButton_monitoring_on;
+    QRadioButton *radioButton_monitoring_off;
     QSpacerItem *verticalSpacer;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_3;
@@ -50,6 +51,7 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_2;
     QDialogButtonBox *buttonBox_2;
+    QButtonGroup *monitorButtonGroup;
 
     void setupUi(QDialog *FolderManagerDialog)
     {
@@ -94,21 +96,25 @@ public:
 
         verticalLayout_2->addWidget(label_2);
 
-        radioButton = new QRadioButton(layoutWidget);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButton_monitoring_on = new QRadioButton(layoutWidget);
+        monitorButtonGroup = new QButtonGroup(FolderManagerDialog);
+        monitorButtonGroup->setObjectName(QString::fromUtf8("monitorButtonGroup"));
+        monitorButtonGroup->addButton(radioButton_monitoring_on);
+        radioButton_monitoring_on->setObjectName(QString::fromUtf8("radioButton_monitoring_on"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/images/icon/arrow_refresh.png"), QSize(), QIcon::Normal, QIcon::Off);
-        radioButton->setIcon(icon);
+        radioButton_monitoring_on->setIcon(icon);
 
-        verticalLayout_2->addWidget(radioButton);
+        verticalLayout_2->addWidget(radioButton_monitoring_on);
 
-        radioButton_2 = new QRadioButton(layoutWidget);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+        radioButton_monitoring_off = new QRadioButton(layoutWidget);
+        monitorButtonGroup->addButton(radioButton_monitoring_off);
+        radioButton_monitoring_off->setObjectName(QString::fromUtf8("radioButton_monitoring_off"));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/images/icon/cross.png"), QSize(), QIcon::Normal, QIcon::Off);
-        radioButton_2->setIcon(icon1);
+        radioButton_monitoring_off->setIcon(icon1);
 
-        verticalLayout_2->addWidget(radioButton_2);
+        verticalLayout_2->addWidget(radioButton_monitoring_off);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -171,8 +177,8 @@ public:
         FolderManagerDialog->setWindowTitle(QCoreApplication::translate("FolderManagerDialog", "Dialog", nullptr));
         label->setText(QCoreApplication::translate("FolderManagerDialog", "\343\203\225\343\202\251\343\203\253\343\203\200\343\203\252\343\202\271\343\203\210", nullptr));
         label_2->setText(QCoreApplication::translate("FolderManagerDialog", "\351\201\270\346\212\236\343\201\225\343\202\214\343\201\237\343\203\225\343\202\251\343\203\253\343\203\200", nullptr));
-        radioButton->setText(QCoreApplication::translate("FolderManagerDialog", "\345\270\270\346\231\202\347\233\243\350\246\226", nullptr));
-        radioButton_2->setText(QCoreApplication::translate("FolderManagerDialog", "\347\233\243\350\246\226\343\201\213\343\202\211\345\244\226\343\201\231", nullptr));
+        radioButton_monitoring_on->setText(QCoreApplication::translate("FolderManagerDialog", "\345\270\270\346\231\202\347\233\243\350\246\226", nullptr));
+        radioButton_monitoring_off->setText(QCoreApplication::translate("FolderManagerDialog", "\347\233\243\350\246\226\343\201\213\343\202\211\345\244\226\343\201\231", nullptr));
         label_3->setText(QCoreApplication::translate("FolderManagerDialog", "\347\233\243\350\246\226\343\203\225\343\202\251\343\203\253\343\203\200", nullptr));
     } // retranslateUi
 

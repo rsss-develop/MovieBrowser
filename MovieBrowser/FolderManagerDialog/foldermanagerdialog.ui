@@ -66,7 +66,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton">
+             <widget class="QRadioButton" name="radioButton_monitoring_on">
               <property name="text">
                <string>常時監視</string>
               </property>
@@ -74,10 +74,13 @@
                <iconset resource="../resource.qrc">
                 <normaloff>:/images/icon/arrow_refresh.png</normaloff>:/images/icon/arrow_refresh.png</iconset>
               </property>
+              <attribute name="buttonGroup">
+               <string notr="true">monitorButtonGroup</string>
+              </attribute>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_2">
+             <widget class="QRadioButton" name="radioButton_monitoring_off">
               <property name="text">
                <string>監視から外す</string>
               </property>
@@ -85,6 +88,9 @@
                <iconset resource="../resource.qrc">
                 <normaloff>:/images/icon/cross.png</normaloff>:/images/icon/cross.png</iconset>
               </property>
+              <attribute name="buttonGroup">
+               <string notr="true">monitorButtonGroup</string>
+              </attribute>
              </widget>
             </item>
             <item>
@@ -166,4 +172,7 @@
   <include location="../resource.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="monitorButtonGroup"/>
+ </buttongroups>
 </ui>

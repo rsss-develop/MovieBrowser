@@ -49,7 +49,6 @@ void IconDelegate::paint(QPainter *painter,
 
         // 元々のフォルダーのアイコン
         QPixmap folderIcon = index.data(Qt::DecorationRole).value<QIcon>().pixmap(folderIconArea.size());
-
         drawDecoration(painter, myOption, folderIconArea, folderIcon);
 
         // フォルダ名

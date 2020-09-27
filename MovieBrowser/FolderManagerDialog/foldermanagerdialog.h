@@ -6,7 +6,6 @@
 #include <QDialog>
 #include <QFileSystemModel>
 #include <QVariant>
-#include <QSet>
 
 namespace Ui {
 class FolderManagerDialog;
@@ -22,11 +21,15 @@ public:
     explicit FolderManagerDialog(QWidget *parent = nullptr);
     ~FolderManagerDialog();
 
+public slots:
+    void setMonitoringStatus(const QModelIndex &index);
+    void monitoring_change(bool checked);
+
 private:
     Ui::FolderManagerDialog *ui;
 
     QFileSystemModel *model;
-
+    QStringList monitorList;
 };
 
 #endif // FOLDERMANAGERDIALOG_H
