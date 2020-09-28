@@ -4,6 +4,7 @@
 
 #include <QFileSystemModel>
 #include <QSettings>
+#include <QDebug>
 
 FolderManagerDialog::FolderManagerDialog(QWidget *parent) :
     QDialog(parent),
@@ -33,7 +34,7 @@ FolderManagerDialog::FolderManagerDialog(QWidget *parent) :
     connect(ui->treeDirView, SIGNAL(clicked(const QModelIndex &)),
             this, SLOT(setMonitoringStatus(const QModelIndex &)));
     connect(ui->radioButton_monitoring_on, SIGNAL(toggled(bool)),
-            this, SLOT(monitoring_on(bool)));
+            this, SLOT(monitoring_change(bool)));
 }
 
 FolderManagerDialog::~FolderManagerDialog()
@@ -56,17 +57,26 @@ void FolderManagerDialog::setMonitoringStatus(const QModelIndex &index)
 
 void FolderManagerDialog::monitoring_change(bool checked)
 {
-    QString filePath;
+    qDebug() << "monitoring_change called";
+    QString filePath = model->filePath(ui->treeDirView->currentIndex());
+
     if (checked) {
-        //選択されているフォルダを監視リストに入れる
+        if(!monitorList.contains(filePath)) {
 
-        //
+            //選択されているフォルダを監視リストに入れる
+            monitorList.append(filePath);
+            qDebug() << "add filePath" << monitorList;
+        }
     } else {
-        //選択されているフォルダを監視リストから外す
+        if(monitorList.contains(filePath)) {
 
+            //選択されているフォルダを監視リストから外す
+            monitorList.removeOne(filePath);
+            qDebug() << "remove filePath" << monitorList;
+        }
     }
     // viewを更新する
-
+    ui->treeDirView->update();
 }
 
 
