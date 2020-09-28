@@ -2,6 +2,7 @@
 #define FOLDERMANAGERDIALOG_H
 
 #include "monitorfilesystemModel.h"
+#include "icondelegate.h"
 
 #include <QDialog>
 #include <QFileSystemModel>
@@ -29,6 +30,7 @@ private:
     Ui::FolderManagerDialog *ui;
 
     QFileSystemModel *model;
+    IconDelegate *delegate;
     QStringList monitorList;
 };
 

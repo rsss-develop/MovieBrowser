@@ -10,6 +10,7 @@ class IconDelegate : public QItemDelegate
 public:
     IconDelegate(int fileNameColumn, QObject *parent=0);
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+    void setMonitorList(QStringList &list);
 
 private:
     int folderNameColumn;

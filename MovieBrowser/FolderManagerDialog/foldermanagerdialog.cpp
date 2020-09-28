@@ -1,6 +1,6 @@
 #include "foldermanagerdialog.h"
 #include "ui_foldermanagerdialog.h"
-#include "icondelegate.h"
+
 
 #include <QFileSystemModel>
 #include <QSettings>
@@ -23,7 +23,8 @@ FolderManagerDialog::FolderManagerDialog(QWidget *parent) :
     ui->treeDirView->setColumnHidden(1, true);
     ui->treeDirView->setColumnHidden(2, true);
     ui->treeDirView->setColumnHidden(3, true);
-    ui->treeDirView->setItemDelegate(new IconDelegate(0));
+    delegate = new IconDelegate(0);
+    ui->treeDirView->setItemDelegate(delegate);
 
     // 監視対処フォルダのリストを設定ファイルから読み出す
     QSettings settings("settings.ini", QSettings::IniFormat);
@@ -58,7 +59,8 @@ void FolderManagerDialog::setMonitoringStatus(const QModelIndex &index)
 void FolderManagerDialog::monitoring_change(bool checked)
 {
     qDebug() << "monitoring_change called";
-    QString filePath = model->filePath(ui->treeDirView->currentIndex());
+    QModelIndex index = ui->treeDirView->currentIndex();
+    QString filePath = model->filePath(index);
 
     if (checked) {
         if(!monitorList.contains(filePath)) {
@@ -76,7 +78,8 @@ void FolderManagerDialog::monitoring_change(bool checked)
         }
     }
     // viewを更新する
-    ui->treeDirView->update();
+    delegate->setMonitorList(monitorList);
+    emit model->dataChanged(index, index);
 }
 
 

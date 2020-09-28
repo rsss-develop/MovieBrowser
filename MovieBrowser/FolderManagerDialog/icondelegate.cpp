@@ -39,10 +39,13 @@ void IconDelegate::paint(QPainter *painter,
 
          // 監視対象か否かのアイコン
         QPixmap monitorIcon;
-        if (monitorList.contains(index.data(Qt::DisplayRole).toString())) {
+        //if (monitorList.contains(index.data(Qt::DisplayRole).toString())) {
+        if (monitorList.contains(index.model()->data(index, Qt::FilePathRole).toString())) {
+                qDebug() << "paint called: monitored";
             monitorIcon = QPixmap(":/images/icon/arrow_refresh.png");
         } else {
             monitorIcon = QPixmap(":/images/icon/cross.png");
+
         }
         drawDecoration(painter, myOption, monitorIconArea, monitorIcon);
 
@@ -58,4 +61,10 @@ void IconDelegate::paint(QPainter *painter,
     } else {
         QItemDelegate::paint(painter, option, index);
     }
+    qDebug() << "paint called" << monitorList;
+}
+
+void IconDelegate::setMonitorList(QStringList &list)
+{
+    monitorList = list;
 }
