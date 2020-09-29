@@ -5,6 +5,7 @@
 #include <QDirModel>
 #include <QPainter>
 #include <QDebug>
+#include <QFileSystemModel>
 
 IconDelegate::IconDelegate(int folderNameColumn, QObject *parent)
     : QItemDelegate(parent)
@@ -39,9 +40,7 @@ void IconDelegate::paint(QPainter *painter,
 
          // 監視対象か否かのアイコン
         QPixmap monitorIcon;
-        //if (monitorList.contains(index.data(Qt::DisplayRole).toString())) {
-        if (monitorList.contains(index.model()->data(index, Qt::FilePathRole).toString())) {
-                qDebug() << "paint called: monitored";
+        if (monitorList.contains(qobject_cast<const QFileSystemModel*>(index.model())->filePath(index))) {
             monitorIcon = QPixmap(":/images/icon/arrow_refresh.png");
         } else {
             monitorIcon = QPixmap(":/images/icon/cross.png");
@@ -61,7 +60,6 @@ void IconDelegate::paint(QPainter *painter,
     } else {
         QItemDelegate::paint(painter, option, index);
     }
-    qDebug() << "paint called" << monitorList;
 }
 
 void IconDelegate::setMonitorList(QStringList &list)
