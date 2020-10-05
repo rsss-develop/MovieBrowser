@@ -25,6 +25,8 @@ public:
 public slots:
     void setMonitoringStatus(const QModelIndex &index);
     void monitoring_change(bool checked);
+    void readSettings();
+    void writeSettings();
 
 private:
     Ui::FolderManagerDialog *ui;

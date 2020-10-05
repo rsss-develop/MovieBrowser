@@ -50,7 +50,7 @@ public:
     QListWidget *listWidget;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_2;
-    QDialogButtonBox *buttonBox_2;
+    QDialogButtonBox *dialogButtonBox;
     QButtonGroup *monitorButtonGroup;
 
     void setupUi(QDialog *FolderManagerDialog)
@@ -157,11 +157,11 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_2);
 
-        buttonBox_2 = new QDialogButtonBox(layoutWidget);
-        buttonBox_2->setObjectName(QString::fromUtf8("buttonBox_2"));
-        buttonBox_2->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        dialogButtonBox = new QDialogButtonBox(layoutWidget);
+        dialogButtonBox->setObjectName(QString::fromUtf8("dialogButtonBox"));
+        dialogButtonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
-        horizontalLayout_3->addWidget(buttonBox_2);
+        horizontalLayout_3->addWidget(dialogButtonBox);
 
 
         verticalLayout_5->addLayout(horizontalLayout_3);
